@@ -14,7 +14,7 @@ import { HomeComponent } from './home.component';
         CommonModule,
         CustomMaterialModule,
         AgmCoreModule.forRoot({
-            apiKey: AppSettingsConfig.apiKey,
+            apiKey: AppSettingsConfig.google.apiKey,
         }),
         AgmJsMarkerClustererModule,
     ],

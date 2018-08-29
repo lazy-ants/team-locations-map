@@ -22,7 +22,7 @@ describe('HomeComponent', () => {
                     BrowserAnimationsModule,
                     CustomMaterialModule,
                     AgmCoreModule.forRoot({
-                        apiKey: AppSettingsConfig.apiKey,
+                        apiKey: AppSettingsConfig.google.apiKey,
                     }),
                     AgmJsMarkerClustererModule,
                 ],
