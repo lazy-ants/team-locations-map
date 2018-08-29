@@ -1,0 +1,83 @@
+<div>
+    <mat-drawer-container class="sidenav-drawer-container" autosize>
+        <mat-drawer #drawer class="sidenav" mode="side">
+            <div class="wrapper" *ngIf="markerInfo">
+                <div class="avatar-section">
+                    <mat-icon class="close-btn" (click)="drawer.close()">close</mat-icon>
+                    <div class="member-img-wrap">
+                        <span class="member-img" [ngStyle]="{'background-image': 'url(' + markerInfo.avatar + ') '}"></span>
+                    </div>
+                    <span class="member-name">{{markerInfo.username}}</span>
+                    <p class="member-work-position" *ngIf="markerInfo.workPosition">{{markerInfo.workPosition}}</p>
+                </div>
+                <div class="info-section">
+                    <div class="info-block-wrap" *ngIf="markerInfo.location">
+                        <div class="info-icon">
+                            <mat-icon class="icon">language</mat-icon>
+                        </div>
+                        <div class="info-block">
+                            <span class="info-block-name">Location</span>
+                            <p class="info-block-text" *ngIf="markerInfo">{{markerInfo.location}}</p>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </div>
+                    <div class="info-block-wrap" *ngIf="markerInfo.email">
+                        <div class="info-icon">
+                            <mat-icon class="icon">mail</mat-icon>
+                        </div>
+                        <div class="info-block">
+                            <span class="info-block-name">Email</span>
+                            <a class="info-block-text" href="'mailto:' + {{markerInfo.email}}">{{markerInfo.email}}</a>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </div>
+                    <div class="info-block-wrap" *ngIf="markerInfo.skype">
+                        <div class="info-icon">
+                            <mat-icon class="icon">call</mat-icon>
+                        </div>
+                        <div class="info-block">
+                            <span class="info-block-name">Skype</span>
+                            <p class="info-block-text">{{markerInfo.skype}}</p>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </div>
+                    <div class="info-block-wrap" *ngIf="markerInfo.bio">
+                        <div class="info-icon">
+                            <mat-icon class="icon">description</mat-icon>
+                        </div>
+                        <div class="info-block">
+                            <span class="info-block-name">Bio</span>
+                            <p class="info-block-text">{{markerInfo.bio}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-drawer>
+        <div class="content-map-wrap">
+            <agm-map
+                    [streetViewControl]="false"
+                    [styles]="styles"
+                    [latitude]="lat"
+                    [longitude]="lng"
+                    [zoom]="zoom">
+                <agm-marker-cluster
+                        [imagePath]="'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m'">
+                    <agm-marker
+                            *ngFor="let marker of markers"
+                            (markerClick)="setMarkerInfo(marker)"
+                            [latitude]="marker.lat"
+                            [longitude]="marker.lng"
+                            [iconUrl]="{
+                                url: (marker.avatar),
+                                scaledSize: {
+                                    height: 40,
+                                    width: 40
+                                }
+                            }"
+                            [markerDraggable]="false">
+                    </agm-marker>
+                </agm-marker-cluster>
+            </agm-map>
+        </div>
+    </mat-drawer-container>
+</div>

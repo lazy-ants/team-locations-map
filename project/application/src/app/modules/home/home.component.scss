@@ -1,0 +1,144 @@
+.header {
+    color: blue;
+    font-size: 38px;
+}
+
+agm-map {
+    height: 100%;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sidenav-drawer-container {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.content-map-wrap {
+    height: 100%;
+}
+
+.sidenav {
+    width: 350px;
+}
+
+.close-btn {
+    align-self: flex-end;
+    cursor: pointer;
+    color: #727272;
+    margin: 4px;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member-img-wrap {
+    width: 114px;
+    height: 114px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+}
+
+.member-name {
+    font-size: 28px;
+    margin-top: 10px;
+    width: 100%;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.member-work-position {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #727272;
+}
+
+.info-section {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.info-icon {
+    width: 45px;
+    min-height: 45px;
+    display: flex;
+    justify-content: center;
+    padding-right: 5px;
+}
+
+.member-img {
+    width: 114px;
+    height: 114px;
+    background-size: cover;
+    background-position-x: 55%;
+    background-repeat: no-repeat;
+    display: block;
+    border-radius: 50%;
+}
+
+.icon {
+    width: 68%;
+    height: 68%;
+    color: #727272;
+}
+
+.info-block-wrap {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 6px;
+}
+
+.info-block-wrap:first-child {
+    margin-top: 0;
+}
+
+.info-block {
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.info-block-name {
+    font-size: 17px;
+}
+
+.info-block-text {
+    font-size: 16px;
+    line-height: 22px;
+    word-wrap: break-word;
+    margin: 8px 0 8px 0;
+    color: #727272;
+    text-decoration: none;
+}
+
+.avatar-section {
+    width: 100%;
+    background-color: #d8d8d84d;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 540px) {
+    .sidenav {
+        width: 100%;
+    }
+}
