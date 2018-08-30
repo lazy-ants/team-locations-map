@@ -160,11 +160,11 @@ def confirm_email(token):
                 'accountId': str(user['_id'])
             })
         else:
-            updated_account = accounts.update_one({'_id': user['_id']}, {'$set': {'confirmed': True}})
-            if updated_account['updatedExisting']:
-                return json.dumps({'token': token, 'accountId': user['_id']})
-            else:
-                return 'Error'
+            accounts.update_one({'_id': user['_id']}, {'$set': {'confirmed': True}})
+            return json.dumps({
+                'token': token,
+                'accountId': str(user['_id'])
+            })
     else:
         return abort(401, '<Invalid token>')
 
