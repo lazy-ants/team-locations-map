@@ -1,9 +1,11 @@
 import { TestBed, async } from '@angular/core/testing';
 import { TransferState } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 import { HomeComponent } from './home.component';
 import { CustomMaterialModule } from '../custom-material/custom-material.module';
@@ -13,6 +15,7 @@ import { DocumentTitleService } from '../core/services/document-title/document-t
 import { TransferStateService } from '../core/services/transfer-state/transfer-state.service';
 import { DocumentMetaService } from '../core/services/document-meta/document-meta.service';
 import { DocumentLinkService } from '../core/services/document-link/document-link.service';
+import { MarkersService } from '../core/http/markers/markers.service';
 
 describe('HomeComponent', () => {
     beforeEach(
@@ -20,6 +23,7 @@ describe('HomeComponent', () => {
             TestBed.configureTestingModule({
                 imports: [
                     BrowserAnimationsModule,
+                    HttpClientModule,
                     CustomMaterialModule,
                     AgmCoreModule.forRoot({
                         apiKey: AppSettingsConfig.google.apiKey,
@@ -43,12 +47,14 @@ describe('HomeComponent', () => {
                             },
                         },
                     },
+                    TransferHttpService,
                     TransferState,
                     TransferStateService,
                     SeoPropertiesService,
                     DocumentTitleService,
                     DocumentMetaService,
                     DocumentLinkService,
+                    MarkersService,
                 ],
             }).compileComponents();
         })
@@ -68,7 +74,7 @@ describe('HomeComponent', () => {
             const app = fixture.debugElement.componentInstance;
             expect(app.lat).toEqual(50.471626);
             expect(app.lng).toEqual(30.453608);
-            expect(app.zoom).toEqual(4.6);
+            expect(app.zoom).toEqual(5);
         })
     );
 });

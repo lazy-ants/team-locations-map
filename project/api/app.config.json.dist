@@ -1,0 +1,10 @@
+{
+    "email_config": {
+        "mailer_host": "",
+        "mailer_port": 587,
+        "mailer_user": "",
+        "mailer_password": ""
+    },
+    "secret_word": "SECRET_WORD",
+    "admin_url": "https://admin.team-locations-map.lazy-ants.com"
+}

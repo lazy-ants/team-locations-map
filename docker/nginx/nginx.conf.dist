@@ -49,11 +49,34 @@ http {
         }
 
         location @error {
-            root /var/www/angular-universal;
+            root /var/www/application;
         }
 
-        error_log /var/log/nginx/angular-universal_error.log;
-        access_log /var/log/nginx/angular-universal_access.log;
+        error_log /var/log/nginx/team-locations-map.lazy-ants.com_error.log;
+        access_log /var/log/nginx/team-locations-map.lazy-ants.com_access.log;
+    }
+
+    server {
+        server_name api.team-locations-map.lazy-ants.com;
+        expires 0;
+
+        location / {
+            add_header 'Access-Control-Allow-Headers' 'Authorization,Content-Type,If-Match';
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_http_version 1.1;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $host;
+            proxy_pass http://angular-universal_python:5000;
+        }
+
+        location /robots.txt {
+            add_header Content-Type text/plain;
+            return 200 "User-agent: *\nDisallow: /\n";
+        }
+
+        error_log /var/log/nginx/api.team-locations-map.lazy-ants.com_error.log;
+        access_log /var/log/nginx/api.team-locations-map.lazy-ants.com_access.log;
     }
 
     open_file_cache max=100;

@@ -3,20 +3,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { SeoPropertiesService } from '../core/services/seo-properties/seo-properties.service';
+import { Marker, MarkersService as MarkersHttpService } from '../core/http/markers/markers.service';
 import * as googleMapStyles from '../core/mocks/google-map-styles/google-map-styles.json';
-import * as googleMapMarkers from '../core/mocks/google-map-markers/google-map-markers.json';
-
-interface Marker {
-    lat: number;
-    lng: number;
-    location?: string;
-    username: string;
-    workPosition?: string;
-    email?: string;
-    skype?: string;
-    bio?: string;
-    avatar: string;
-}
 
 @Component({
     selector: 'app-home',
@@ -29,18 +17,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     lng = 30.453608;
     zoom = 5;
     styles: any = googleMapStyles.default;
-    markers: Marker[] = googleMapMarkers.default;
+    markers: Marker[] = [];
     markerInfo: Marker;
     @ViewChild('drawer') sidenav;
 
     constructor(
         private route: ActivatedRoute,
         private seoPropertiesService: SeoPropertiesService,
+        private markersHttpService: MarkersHttpService,
         @Inject(PLATFORM_ID) private platformId: Object
     ) {}
 
     ngOnInit() {
         this.seoPropertiesService.setSeoProps(this.route.snapshot.data.seoProps);
+        this.markersHttpService.getMarkers().subscribe((markers: any) => (this.markers = markers._items));
     }
 
     ngOnDestroy() {

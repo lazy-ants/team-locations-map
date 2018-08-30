@@ -4,4 +4,7 @@ export const environment = {
     google: {
         apiKey: 'YOUR_KEY',
     },
+    api: {
+        url: 'https://api.team-locations-map.lazy-ants.com',
+    },
 };

@@ -1,10 +1,26 @@
 version: "2.0"
 
 services:
+    db:
+        image: umputun/mongo-auth
+        restart: always
+        environment:
+            MONGO_PASSWD: app
+
     application:
         image: debian:jessie
         volumes:
-            - ./project/application:/var/www/angular-universal
+            - ./project:/var/www
+        tty: true
+
+    python:
+        build: docker/python
+        restart: always
+        container_name: angular-universal_python
+        links:
+            - db
+        volumes_from:
+            - application
         tty: true
 
     nodejs:
@@ -19,5 +35,7 @@ services:
     nginx:
         build: docker/nginx
         restart: always
+        links:
+            - python
         volumes_from:
             - application
