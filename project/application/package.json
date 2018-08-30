@@ -33,6 +33,7 @@
         "@gorniv/ngx-transfer-http": "^2.1.1",
         "@nguniversal/express-engine": "6.0.0",
         "@nguniversal/module-map-ngfactory-loader": "6.0.0",
+        "@types/underscore": "^1.8.9",
         "classlist.js": "^1.1.20150312",
         "core-js": "^2.5.4",
         "domino": "^2.1.0",
@@ -43,6 +44,7 @@
         "material-design-icons": "^3.0.1",
         "rxjs": "^6.0.0",
         "ts-loader": "^4.4.2",
+        "underscore": "^1.9.1",
         "webpack-node-externals": "^1.7.2",
         "zone.js": "~0.8.26"
     },

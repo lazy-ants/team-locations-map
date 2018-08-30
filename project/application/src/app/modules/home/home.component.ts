@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.seoPropertiesService.setSeoProps(this.route.snapshot.data.seoProps);
-        this.markersHttpService.getMarkers().subscribe((markers: any) => (this.markers = markers._items));
+        this.markersHttpService.getMarkers().subscribe((response: any) => (this.markers = response._items));
     }
 
     ngOnDestroy() {

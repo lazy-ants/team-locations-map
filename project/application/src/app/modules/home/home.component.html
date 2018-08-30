@@ -61,7 +61,8 @@
                     [longitude]="lng"
                     [zoom]="zoom">
                 <agm-marker-cluster
-                    [imagePath]="'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m'">
+                    [imagePath]="'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m'"
+                    [maxZoom]="17">
                     <agm-marker
                             *ngFor="let marker of markers"
                             (markerClick)="setMarkerInfo(marker)"
