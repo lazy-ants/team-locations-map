@@ -17,19 +17,24 @@ X_DOMAINS = '*'
 IF_MATCH = False
 X_HEADERS = ['Authorization', 'Content-Type', 'If-Match']
 
-# Enable reads (GET), inserts (POST) and DELETE for resources/collections
+# Enable reads (GET), inserts (POST) for resources/collections
 # (if you omit this line, the API will default to ['GET'] and provide
 # read-only access to the endpoint).
-RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
+RESOURCE_METHODS = ['GET', 'POST']
 
-# Enable reads (GET), edits (PATCH), replacements (PUT) and deletes of
+# Enable reads (GET), edits (PATCH) and deletes of
 # individual items  (defaults to read-only item access).
-ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
+ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
 
 markers = {
     'authentication': TokenAuth,
     'public_methods': ['GET'],
     'public_item_methods': ['GET'],
+    
+    # We choose to override global cache-control directives for this resource.
+    'cache_control': 'max-age=10,must-revalidate',
+    'cache_expires': 10,
+
     'schema': {
         # Schema definition, based on Cerberus grammar. Check the Cerberus project
         # (https://github.com/pyeve/cerberus) for details.
@@ -70,7 +75,6 @@ markers = {
         },
         'account': {
             'type': 'objectid',
-            'required': True,
             'data_relation': {
                 'resource': 'accounts',
                 'embeddable': True
@@ -83,7 +87,6 @@ markers = {
 }
 
 accounts = {
-    'authentication': TokenAuth,
     'schema': {
         'email': {
             'type': 'string',
@@ -104,6 +107,5 @@ accounts = {
 }
 
 DOMAIN = {
-    'markers': markers,
-    'accounts': accounts
+    'markers': markers
 }
