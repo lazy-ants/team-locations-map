@@ -23,15 +23,15 @@ cp project/api/db.config.json.dist project/api/db.config.json
 
 ```
 docker-compose up -d --build
-docker exec -ti angular-universal_nodejs bash -c 'cd application && npm install'
-docker exec -ti angular-universal_nodejs bash -c 'cd application && npm start'
+docker exec -ti angular-universal_nodejs bash -c 'npm install'
+docker exec -ti angular-universal_nodejs bash -c 'npm start'
 ```
 
 - in prod mode (bash deploy.sh as quick solution)
 
 ```
 docker-compose up -d --build
-docker exec -ti angular-universal_nodejs bash -c 'cd application && npm install'
-docker exec -ti angular-universal_nodejs bash -c 'cd application && npm run build:ssr'
-docker exec -ti angular-universal_nodejs bash -c 'cd application && npm run serve:ssr'
+docker exec -ti angular-universal_nodejs bash -c 'npm install'
+docker exec -ti angular-universal_nodejs bash -c 'npm run build:ssr'
+docker exec -ti angular-universal_nodejs bash -c 'npm run serve:ssr'
 ```
