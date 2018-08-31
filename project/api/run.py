@@ -60,7 +60,10 @@ def update_hook(resource_name, item, original):
         try:
             user_info = confirm_token(token)
             account = user_info['id']
-            if (original['account'] != account):
+            if 'account' in original:
+                if (original['account'] != account):
+                    return abort(401, 'You don\'t have an access to complete this action')
+            else:
                 return abort(401, 'You don\'t have an access to complete this action')
             
             strip_dictionary(item)
@@ -76,7 +79,10 @@ def replace_hook(resource_name, item):
         try:
             user_info = confirm_token(token)
             account = user_info['id']
-            if (item['account'] != account):
+            if 'account' in item:
+                if (item['account'] != account):
+                    return abort(401, 'You don\'t have an access to complete this action')
+            else:
                 return abort(401, 'You don\'t have an access to complete this action')
             
             strip_dictionary(item)
@@ -93,7 +99,10 @@ def fetched_resource_hook(resource_name, response):
             user_info = confirm_token(token)
             account = user_info['id']
             for item in response['_items']:
-                if (item['account'] != account):
+                if 'account' in item:
+                    if (item['account'] != account):
+                        return abort(401, 'You don\'t have an access to complete this action')
+                else:
                     return abort(401, 'You don\'t have an access to complete this action')
         except:
             return abort(401, 'Please provide proper credentials')
@@ -111,7 +120,10 @@ def fetched_item_hook(resource_name, response):
         try:
             user_info = confirm_token(token)
             account = user_info['id']
-            if (response['account'] != account):
+            if 'account' in response:
+                if (response['account'] != account):
+                    return abort(401, 'You don\'t have an access to complete this action')
+            else:
                 return abort(401, 'You don\'t have an access to complete this action')
         except:
             return abort(401, 'Please provide proper credentials')
@@ -128,7 +140,10 @@ def delete_item_hook(resource_name, item):
         try:
             user_info = confirm_token(token)
             account = user_info['id']
-            if (item['account'] != account):
+            if 'account' in item:
+                if (item['account'] != account):
+                    return abort(401, 'You don\'t have an access to complete this action')
+            else:
                 return abort(401, 'You don\'t have an access to complete this action')
         except:
             return abort(401, 'Please provide proper credentials')
