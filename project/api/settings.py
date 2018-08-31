@@ -73,17 +73,7 @@ markers = {
             },
             'required': True,
         },
-        'account': {
-            'type': 'objectid',
-            'data_relation': {
-                'resource': 'accounts',
-                'embeddable': True
-            }
-        }
     },
-    'mongo_indexes': {
-        'account': [('account', 1)]
-    }
 }
 
 accounts = {
@@ -106,6 +96,25 @@ accounts = {
     }
 }
 
-DOMAIN = {
+schemas = {
     'markers': markers
 }
+
+for attr, value in schemas.items():
+    print(attr, value)
+    schemas[attr]['schema'].update({
+        'account': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'accounts',
+                'embeddable': True
+            }
+        }
+    })
+    schemas[attr].update({
+        'mongo_indexes': {
+            'account': [('account', 1)]
+        }
+    })
+
+DOMAIN = schemas
