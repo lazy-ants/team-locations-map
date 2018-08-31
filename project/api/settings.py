@@ -97,17 +97,16 @@ accounts = {
 }
 
 schemas = {
-    'markers': markers
+    'markers': markers,
 }
 
 for attr, value in schemas.items():
-    print(attr, value)
     schemas[attr]['schema'].update({
         'account': {
             'type': 'objectid',
             'data_relation': {
                 'resource': 'accounts',
-                'embeddable': True
+                'embeddable': False
             }
         }
     })
