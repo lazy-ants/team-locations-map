@@ -28,7 +28,7 @@ export class SeoPropertiesService {
         private documentLinkService: DocumentLinkService
     ) {}
 
-    public setSeoProps(seoProps: SeoPropsDefinition): this {
+    public setSeoProps(seoProps: SeoPropsDefinition = {}): this {
         const { title, metaTags, linkTags } = seoProps;
 
         if (title) {
