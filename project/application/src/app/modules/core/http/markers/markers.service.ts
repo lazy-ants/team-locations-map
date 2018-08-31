@@ -8,19 +8,29 @@ import * as _ from 'underscore';
 import { CoreModule } from '../../core.module';
 import { AppSettingsConfig } from '../../../../configs/app-settings.config';
 
-interface MarkerLocation {
+interface MarkerInfoLocation {
     name: string;
+}
+
+interface MarkerLocation {
     lat: number;
     lng: number;
 }
 
-export interface Marker {
-    location: MarkerLocation;
+export interface MarkerInfo {
+    _id: string;
+    location: MarkerInfoLocation;
     username: string;
     workPosition?: string;
     email?: string;
     skype?: string;
     bio?: string;
+    avatar: string;
+}
+
+export interface Marker {
+    _id: string;
+    location: MarkerLocation;
     avatar: string;
 }
 
@@ -38,12 +48,8 @@ export class MarkersService {
         const params = new HttpParams().set('max_results', '50').set(
             'projection',
             JSON.stringify({
-                location: 1,
-                username: 1,
-                workPosition: 1,
-                email: 1,
-                skype: 1,
-                bio: 1,
+                'location.lat': 1,
+                'location.lng': 1,
                 avatar: 1,
             })
         );
@@ -55,6 +61,24 @@ export class MarkersService {
                 return data;
             })
         );
+    }
+
+    public getMarker(id: string): Observable<any> {
+        const apiUrl = this.appSettingsConfig.api.url;
+        const params = new HttpParams().set(
+            'projection',
+            JSON.stringify({
+                'location.name': 1,
+                username: 1,
+                workPosition: 1,
+                email: 1,
+                skype: 1,
+                bio: 1,
+                avatar: 1,
+            })
+        );
+
+        return this.http.get(`${apiUrl}/markers/${id}`, { params });
     }
 
     private correctGroupedMarkers(markers: Marker[]): Marker[] {

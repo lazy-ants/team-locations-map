@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { SeoPropertiesService } from '../core/services/seo-properties/seo-properties.service';
-import { Marker, MarkersService as MarkersHttpService } from '../core/http/markers/markers.service';
+import { MarkerInfo, Marker, MarkersService as MarkersHttpService } from '../core/http/markers/markers.service';
 import * as googleMapStyles from '../core/mocks/google-map-styles/google-map-styles.json';
 
 @Component({
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     zoom = 5;
     styles: any = googleMapStyles.default;
     markers: Marker[] = [];
-    markerInfo: Marker;
+    markerInfo: MarkerInfo;
     @ViewChild('drawer') sidenav;
 
     constructor(
@@ -44,8 +44,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     public setMarkerInfo(marker: Marker): void {
         if (!!marker) {
-            this.markerInfo = marker;
-            this.sidenav.open();
+            this.markersHttpService.getMarker(marker._id).subscribe((response: MarkerInfo) => {
+                this.markerInfo = response;
+                this.sidenav.open();
+            });
         }
     }
 }

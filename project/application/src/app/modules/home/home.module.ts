@@ -5,6 +5,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { CustomMaterialModule } from '../custom-material/custom-material.module';
+import { SharedModule } from '../shared/shared.module';
 import { AppSettingsConfig } from '../../configs/app-settings.config';
 import { HomeComponent } from './home.component';
 
@@ -17,6 +18,7 @@ import { HomeComponent } from './home.component';
             apiKey: AppSettingsConfig.google.apiKey,
         }),
         AgmJsMarkerClustererModule,
+        SharedModule,
     ],
     declarations: [HomeComponent],
 })

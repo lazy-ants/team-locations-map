@@ -9,6 +9,7 @@ import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 import { HomeComponent } from './home.component';
 import { CustomMaterialModule } from '../custom-material/custom-material.module';
+import { SharedModule } from '../shared/shared.module';
 import { AppSettingsConfig } from '../../configs/app-settings.config';
 import { SeoPropertiesService } from '../core/services/seo-properties/seo-properties.service';
 import { DocumentTitleService } from '../core/services/document-title/document-title.service';
@@ -29,6 +30,7 @@ describe('HomeComponent', () => {
                         apiKey: AppSettingsConfig.google.apiKey,
                     }),
                     AgmJsMarkerClustererModule,
+                    SharedModule,
                 ],
                 declarations: [HomeComponent],
                 providers: [

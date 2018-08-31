@@ -1,17 +1,9 @@
 [
     {
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#f5f5f5"
-            }
-        ]
-    },
-    {
         "elementType": "labels.icon",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -36,7 +28,7 @@
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -63,7 +55,7 @@
         "elementType": "labels.text",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -80,7 +72,7 @@
         "featureType": "poi.business",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -98,7 +90,7 @@
         "elementType": "labels.text",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -152,7 +144,7 @@
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },

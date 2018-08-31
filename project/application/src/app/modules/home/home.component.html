@@ -27,7 +27,7 @@
                         </div>
                         <div class="info-block">
                             <span class="info-block-name">Email</span>
-                            <a class="info-block-text" href="'mailto:' + {{markerInfo.email}}">{{markerInfo.email}}</a>
+                            <a class="info-block-text" [attr.href]="'mailto:' + markerInfo.email | safeUrl: 'resourceUrl'">{{markerInfo.email}}</a>
                             <mat-divider></mat-divider>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="info-block">
                             <span class="info-block-name">Skype</span>
-                            <p class="info-block-text">{{markerInfo.skype}}</p>
+                            <a class="info-block-text" [attr.href]="'skype:' + markerInfo.skype + '?chat' | safeUrl: 'resourceUrl'">{{markerInfo.skype}}</a>
                             <mat-divider></mat-divider>
                         </div>
                     </div>

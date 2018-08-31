@@ -1,4 +1,9 @@
 import { NgModule } from '@angular/core';
 
-@NgModule({})
+import { SafeUrlPipe } from './pipes/safe-url/safe-url.pipe';
+
+@NgModule({
+    declarations: [SafeUrlPipe],
+    exports: [SafeUrlPipe],
+})
 export class SharedModule {}
