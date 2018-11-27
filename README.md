@@ -1,4 +1,7 @@
 # Team-locations-map frontend application [![CircleCI](https://circleci.com/gh/lazy-ants/team-locations-map.svg?style=svg)](https://circleci.com/gh/lazy-ants/team-locations-map)
+
+Onepager map showing location of the team members
+
 Based on [Angular Universal: server-side rendering](https://github.com/lazy-ants/angular-universal/) - commit [55fc1e4f140fabff2bb8256fa5936ec77e26803d](https://github.com/lazy-ants/angular-universal/commit/55fc1e4f140fabff2bb8256fa5936ec77e26803d)
 
 ## CLONE REPO
